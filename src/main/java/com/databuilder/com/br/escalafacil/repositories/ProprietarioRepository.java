@@ -5,7 +5,12 @@ import org.springframework.stereotype.Repository;
 
 import com.databuilder.com.br.escalafacil.domain.Proprietario;
 
+/**
+ * Created by Wendell Clive Santos de Lira - Email: wendell.clive@gmail.com Data:
+ *         14/09/2018
+ */
+
 @Repository
-public interface ProprietarioRepositories extends JpaRepository<Proprietario, Integer> {
+public interface ProprietarioRepository extends JpaRepository<Proprietario, Integer> {
 
 }
