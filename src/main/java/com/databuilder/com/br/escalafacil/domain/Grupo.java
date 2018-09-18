@@ -1,7 +1,6 @@
 package com.databuilder.com.br.escalafacil.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,26 +22,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "proprietario")
-public class Proprietario implements Serializable {
+@Table(name="grupo")
+public class Grupo implements Serializable {
 
-	
-	private static final long serialVersionUID = -6985558711787239599L;
-	
+	private static final long serialVersionUID = 5914356445552675840L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter @Setter private Integer id;
-	@Column(nullable = false, length = 100)
-	@Getter @Setter private String email;
-	@Column(nullable = false, length = 100)
-	@Getter @Setter private String senha;
-	@Column(length = 100)
+	@Column(nullable = false, length = 50)
 	@Getter @Setter private String nome;
-	@Column(nullable = false)
-	@Getter @Setter private Date dataDeNascimento;
-	@Column(columnDefinition = "smallint", nullable = false)
-	@Getter @Setter private Integer status;
-	@Column(columnDefinition = "smallint", nullable = false)
-	@Getter @Setter private Integer tentativasDeAcesso;
-
 }
