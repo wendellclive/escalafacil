@@ -12,6 +12,7 @@ import com.databuilder.com.br.escalafacil.domain.Escala;
 import com.databuilder.com.br.escalafacil.domain.Grupo;
 import com.databuilder.com.br.escalafacil.domain.Membro;
 import com.databuilder.com.br.escalafacil.domain.Proprietario;
+import com.databuilder.com.br.escalafacil.domain.enums.StatusUsuario;
 import com.databuilder.com.br.escalafacil.repositories.EscalaRepository;
 import com.databuilder.com.br.escalafacil.repositories.GrupoRepository;
 import com.databuilder.com.br.escalafacil.repositories.MembroRepository;
@@ -41,11 +42,11 @@ public class EscalafacilApplication implements CommandLineRunner {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		
-		Proprietario prop1 = new Proprietario(null, "teste@teste.com.br", "ADEROGILDO DA SILVA", "123456", sdf.parse("09/02/1987 00:00"), 0,0);
-		Proprietario prop2 = new Proprietario (null, "teste@teste.com.br", "SIGFREID DA SILVA", "123456", sdf.parse("01/09/1987 00:00"), 0,0);
-		Proprietario prop3 = new Proprietario (null, "teste@teste.com.br", "JORGE NAILTON", "123456",sdf.parse("13/12/1990 00:00"), 0,0);
-		Proprietario prop4 = new Proprietario (null, "teste@teste.com.br", "LEANDRO LIANDERSON", "123456", sdf.parse("02/05/1980 00:00"), 0,0);
-		Proprietario prop5 = new Proprietario (null, "teste@teste.com.br", "CASSIO CASSIANO", "123456", sdf.parse("09/10/2000 00:00"), 0,0);
+		Proprietario prop1 = new Proprietario(null, "teste@teste.com.br", "ADEROGILDO DA SILVA", "123456", sdf.parse("09/02/1987 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.ATIVO, 0);
+		Proprietario prop2 = new Proprietario (null, "teste@teste.com.br", "SIGFREID DA SILVA", "123456", sdf.parse("01/09/1987 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.ATIVO, 0);
+		Proprietario prop3 = new Proprietario (null, "teste@teste.com.br", "JORGE NAILTON", "123456",sdf.parse("13/12/1990 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop4 = new Proprietario (null, "teste@teste.com.br", "LEANDRO LIANDERSON", "123456", sdf.parse("02/05/1980 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.INATIVO, 0);
+		Proprietario prop5 = new Proprietario (null, "teste@teste.com.br", "CASSIO CASSIANO", "123456", sdf.parse("09/10/2000 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
 		
 		Grupo gru1 = new Grupo(null, "GRUPO 01");
 		Grupo gru2 = new Grupo(null, "GRUPO 02");

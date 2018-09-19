@@ -12,11 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.databuilder.com.br.escalafacil.domain.enums.StatusUsuario;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 /***
@@ -41,14 +43,15 @@ public class Proprietario implements Serializable {
 	private String senha;
 	private String nome;
 	private Date dataDeNascimento;
-	private Integer status;
+	private Date dataCadastro;
+	private Integer statusUsuario;
 	private Integer tentativasDeAcesso;
 	
 	@JsonManagedReference
 	@OneToMany(mappedBy="proprietario")
 	public List<Escala> escalas = new ArrayList<>();
 
-	public Proprietario(Integer id, String email, String senha, String nome, Date dataDeNascimento, Integer status,
+	public Proprietario(Integer id, String email, String senha, String nome, Date dataCadastro,Date dataDeNascimento, StatusUsuario statusUsuario,
 			Integer tentativasDeAcesso) {
 		super();
 		this.id = id;
@@ -56,8 +59,17 @@ public class Proprietario implements Serializable {
 		this.senha = senha;
 		this.nome = nome;
 		this.dataDeNascimento = dataDeNascimento;
-		this.status = status;
+		this.dataCadastro = dataCadastro;
+		this.statusUsuario = statusUsuario.getCodigo();
 		this.tentativasDeAcesso = tentativasDeAcesso;
 	}
 
+	@NonNull
+	public StatusUsuario getStatusUsuario() {
+		return StatusUsuario.toEnum(statusUsuario);
+	}
+	@NonNull
+	public void setStatusUsuario(StatusUsuario statusUsuario) {
+		this.statusUsuario = statusUsuario.getCodigo();
+	}
 }
