@@ -3,7 +3,7 @@ package com.databuilder.com.br.escalafacil.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.databuilder.com.br.escalafacil.domain.Funcao;
+import com.databuilder.com.br.escalafacil.domain.Escala;
 
 /**
  * Created by Wendell Clive Santos de Lira - Email: wendell.clive@gmail.com Data:
@@ -11,6 +11,6 @@ import com.databuilder.com.br.escalafacil.domain.Funcao;
  */
 
 @Repository
-public interface FuncaoRepository extends JpaRepository<Funcao, Integer> {
+public interface EscalaRepository extends JpaRepository<Escala, Integer> {
 
 }

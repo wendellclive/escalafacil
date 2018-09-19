@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.databuilder.com.br.escalafacil.domain.Funcao;
-import com.databuilder.com.br.escalafacil.services.FuncaoService;
+import com.databuilder.com.br.escalafacil.domain.Escala;
+import com.databuilder.com.br.escalafacil.services.EscalaService;
 
 /**
  * Created by Wendell Clive Santos de Lira - Email: wendell.clive@gmail.com Data:
@@ -17,17 +17,17 @@ import com.databuilder.com.br.escalafacil.services.FuncaoService;
 
 // Incluir anotations para compor a camada End-Poin REST
 @RestController
-@RequestMapping(value = "/funcoes")
-public class FuncaoResource {
+@RequestMapping(value = "/escalas")
+public class EscalaResource {
 
 	@Autowired
-	private FuncaoService service;
+	private EscalaService service;
 	
 	// Associado ao verbo HTTP
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		
-		Funcao obj = service.find(id);
+		Escala obj = service.find(id);
 		
 		return ResponseEntity.ok().body(obj);
 

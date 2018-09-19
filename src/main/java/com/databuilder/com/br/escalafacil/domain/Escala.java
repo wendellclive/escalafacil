@@ -1,15 +1,14 @@
 package com.databuilder.com.br.escalafacil.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -23,36 +22,36 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @Entity
+@Table(name = "escala")
 @Getter
 @Setter
-@Table(name = "proprietario")
-public class Proprietario implements Serializable {
+public class Escala implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String email;
-	private String senha;
-	private String nome;
-	private Date dataDeNascimento;
-	private Integer status;
-	private Integer tentativasDeAcesso;
+	private String instituicao;
+	private String finalidade;
+	private String titulo;
+	private String tipo;
+	private Date DataCriacao;
 
-	@OneToMany(mappedBy="proprietario")
-	public List<Escala> escalas = new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name = "proprietario_id")
+	private Proprietario proprietario;
 
-	public Proprietario(Integer id, String email, String senha, String nome, Date dataDeNascimento, Integer status,
-			Integer tentativasDeAcesso) {
+	public Escala(Integer id, String instituicao, String finalidade, String titulo, String tipo, Date dataCriacao,
+			Proprietario proprietario) {
 		super();
 		this.id = id;
-		this.email = email;
-		this.senha = senha;
-		this.nome = nome;
-		this.dataDeNascimento = dataDeNascimento;
-		this.status = status;
-		this.tentativasDeAcesso = tentativasDeAcesso;
+		this.instituicao = instituicao;
+		this.finalidade = finalidade;
+		this.titulo = titulo;
+		this.tipo = tipo;
+		DataCriacao = dataCriacao;
+		this.proprietario = proprietario;
 	}
 
 	@Override
@@ -71,7 +70,7 @@ public class Proprietario implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Proprietario other = (Proprietario) obj;
+		Escala other = (Escala) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

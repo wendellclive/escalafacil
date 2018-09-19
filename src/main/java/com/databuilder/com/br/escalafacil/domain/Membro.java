@@ -22,13 +22,17 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="funcao")
-public class Funcao implements Serializable {
+@Table(name="membro")
+public class Membro implements Serializable {
 
 	private static final long serialVersionUID = 5914356445552675840L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter @Setter private Integer id;
-	@Column(nullable = false, length = 50)
-	@Getter @Setter private String funcao;
+	@Column(nullable = false, length = 100)
+	@Getter @Setter private String nome;
+	@Column(nullable = false, length = 100)
+	@Getter @Setter private String email;
+
 }
