@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.databuilder.com.br.escalafacil.domain.Proprietario;
 import com.databuilder.com.br.escalafacil.services.ProprietarioService;
 
+import javassist.tools.rmi.ObjectNotFoundException;
+
 /**
  * Created by Wendell Clive Santos de Lira - Email: wendell.clive@gmail.com Data:
  *         14/09/2018
@@ -25,7 +27,7 @@ public class ProprietarioResource {
 	
 	// Associado ao verbo HTTP
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) {
+	public ResponseEntity<?> find(@PathVariable Integer id) throws ObjectNotFoundException {
 		
 		Proprietario obj = service.find(id);
 		

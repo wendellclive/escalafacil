@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,6 +43,7 @@ public class Escala implements Serializable {
 	private String tipo;
 	private Date DataCriacao;
 
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "proprietario_id")
 	private Proprietario proprietario;

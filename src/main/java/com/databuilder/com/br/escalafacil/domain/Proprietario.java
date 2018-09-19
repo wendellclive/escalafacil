@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,6 +44,7 @@ public class Proprietario implements Serializable {
 	private Integer status;
 	private Integer tentativasDeAcesso;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy="proprietario")
 	public List<Escala> escalas = new ArrayList<>();
 

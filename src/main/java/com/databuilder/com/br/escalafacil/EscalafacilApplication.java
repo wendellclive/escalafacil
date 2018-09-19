@@ -73,7 +73,7 @@ public class EscalafacilApplication implements CommandLineRunner {
 		prop2.getEscalas().addAll(Arrays.asList(esc3, esc4, esc5));
 
 		proprietarioRepository.saveAll(Arrays.asList(prop1, prop2,prop3, prop4, prop5));
-		escalaRepository.saveAll(Arrays.asList(esc1, esc2));		
+		escalaRepository.saveAll(Arrays.asList(esc1, esc2, esc3, esc4, esc5, esc6));		
 		
 	}
 }
