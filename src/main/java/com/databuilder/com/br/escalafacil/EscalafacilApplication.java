@@ -11,12 +11,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.databuilder.com.br.escalafacil.domain.Escala;
 import com.databuilder.com.br.escalafacil.domain.Grupo;
 import com.databuilder.com.br.escalafacil.domain.Membro;
+import com.databuilder.com.br.escalafacil.domain.MembrosEscalados;
 import com.databuilder.com.br.escalafacil.domain.Proprietario;
 import com.databuilder.com.br.escalafacil.domain.enums.StatusUsuario;
 import com.databuilder.com.br.escalafacil.domain.enums.TipoEscala;
 import com.databuilder.com.br.escalafacil.repositories.EscalaRepository;
 import com.databuilder.com.br.escalafacil.repositories.GrupoRepository;
 import com.databuilder.com.br.escalafacil.repositories.MembroRepository;
+import com.databuilder.com.br.escalafacil.repositories.MembrosEscaladosRepository;
 import com.databuilder.com.br.escalafacil.repositories.ProprietarioRepository;
 
 @SpringBootApplication
@@ -34,6 +36,9 @@ public class EscalafacilApplication implements CommandLineRunner {
 	@Autowired
 	private EscalaRepository escalaRepository;
 
+	@Autowired
+	private MembrosEscaladosRepository membrosEscaladosRepository;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(EscalafacilApplication.class, args);
 	}
@@ -61,6 +66,8 @@ public class EscalafacilApplication implements CommandLineRunner {
 		Membro mem1 = new Membro(null, "FULANO DA SILVA SA", "fulano@gmail.com");
 		Membro mem2 = new Membro(null, "SICRANO FOFO QUEIRO", "sicrano@gmail.com");
 		Membro mem3 = new Membro(null, "BELTRANO OUVINTE FOFO", "beltrano@gmail.com");
+		Membro mem4 = new Membro(null, "JOAO HENRIQUE", "beltrano@gmail.com");
+		Membro mem5 = new Membro(null, "APOLINO SABINO", "beltrano@gmail.com");
 		
 		membroRepository.saveAll(Arrays.asList(mem1, mem2, mem3));
 
@@ -76,6 +83,32 @@ public class EscalafacilApplication implements CommandLineRunner {
 
 		proprietarioRepository.saveAll(Arrays.asList(prop1, prop2,prop3, prop4, prop5));
 		escalaRepository.saveAll(Arrays.asList(esc1, esc2, esc3, esc4, esc5, esc6));		
+
+		MembrosEscalados mesc1 = new MembrosEscalados(mem1, esc1, sdf.parse("20/09/2018 08:00"), sdf.parse("20/09/2018 18:00"), "PROFESSOR");
+		MembrosEscalados mesc2 = new MembrosEscalados(mem1, esc2, sdf.parse("21/09/2018 08:00"), sdf.parse("21/09/2018 18:00"), "PROFESSOR");
+		MembrosEscalados mesc3 = new MembrosEscalados(mem2, esc3, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
+//		MembrosEscalados mesc4 = new MembrosEscalados(mem2, esc4, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
+//		MembrosEscalados mesc5 = new MembrosEscalados(mem3, esc1, sdf.parse("20/09/2018 08:00"), sdf.parse("20/09/2018 18:00"), "PROFESSOR");
+//		MembrosEscalados mesc6 = new MembrosEscalados(mem3, esc2, sdf.parse("21/09/2018 08:00"), sdf.parse("21/09/2018 18:00"), "PROFESSOR");
+//		MembrosEscalados mesc7 = new MembrosEscalados(mem4, esc3, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
+//		MembrosEscalados mesc8 = new MembrosEscalados(mem4, esc4, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
+//		MembrosEscalados mesc9 = new MembrosEscalados(mem5, esc5, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
+//		MembrosEscalados mesc10 = new MembrosEscalados(mem5, esc6, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
+		
+		mem1.getMembrosEscalados().addAll(Arrays.asList(mesc1, mesc2));
+		mem2.getMembrosEscalados().addAll(Arrays.asList(mesc3));
+//		mem3.getMembrosEscalados().addAll(Arrays.asList(mesc5, mesc6));
+//		mem4.getMembrosEscalados().addAll(Arrays.asList(mesc7, mesc8));
+//		mem5.getMembrosEscalados().addAll(Arrays.asList(mesc9, mesc10));
+		
+		esc1.getMembrosEscalados().addAll(Arrays.asList(mesc1));
+		esc2.getMembrosEscalados().addAll(Arrays.asList(mesc2));
+		esc3.getMembrosEscalados().addAll(Arrays.asList(mesc3));
+//		esc4.getMembrosEscalados().addAll(Arrays.asList(mesc4, mesc8));
+//		esc5.getMembrosEscalados().addAll(Arrays.asList(mesc9));
+//		esc6.getMembrosEscalados().addAll(Arrays.asList(mesc10));
+	
+		membrosEscaladosRepository.saveAll(Arrays.asList(mesc1, mesc2, mesc3));
 		
 	}
 }

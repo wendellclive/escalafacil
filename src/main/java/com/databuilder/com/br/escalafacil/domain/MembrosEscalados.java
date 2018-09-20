@@ -6,24 +6,22 @@ import java.util.Date;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-@EqualsAndHashCode
 @Entity
-public class EscalaMembros implements Serializable{
-
+public class MembrosEscalados implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private EscalaMembroPK id = new EscalaMembroPK();
+	private MembrosEscaladosPK id = new MembrosEscaladosPK();
 
 	private Date dataHoraInicio;
 	private Date dataHoraFim;
 	private String funcao;
 
-	public EscalaMembros(Membro membro, Escala escala, Date dataHoraInicio, Date dataHoraFim,
+	public MembrosEscalados(Membro membro, Escala escala, Date dataHoraInicio, Date dataHoraFim,
 			String funcao) {
 		super();
 		id.setMembro(membro);
@@ -41,11 +39,11 @@ public class EscalaMembros implements Serializable{
 		return id.getEscala();
 	}
 
-	public EscalaMembroPK getId() {
+	public MembrosEscaladosPK getId() {
 		return id;
 	}
 
-	public void setId(EscalaMembroPK id) {
+	public void setId(MembrosEscaladosPK id) {
 		this.id = id;
 	}
 
@@ -71,6 +69,31 @@ public class EscalaMembros implements Serializable{
 
 	public void setFuncao(String funcao) {
 		this.funcao = funcao;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MembrosEscalados other = (MembrosEscalados) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 }

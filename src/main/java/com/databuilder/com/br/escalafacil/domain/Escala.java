@@ -53,7 +53,7 @@ public class Escala implements Serializable {
 	private Proprietario proprietario;
 
 	@OneToMany(mappedBy="id.escala")
-	private Set<EscalaMembros> membrosEscalados = new HashSet<>();
+	private Set<MembrosEscalados> membrosEscalados = new HashSet<>();
 	
 	public Escala(Integer id, String instituicao, String finalidade, String titulo, TipoEscala tipoEscala, Date dataCriacao,
 			Proprietario proprietario) {

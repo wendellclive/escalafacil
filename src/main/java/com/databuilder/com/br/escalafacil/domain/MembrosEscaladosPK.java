@@ -10,11 +10,11 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+@EqualsAndHashCode
 @Getter
 @Setter
-@EqualsAndHashCode
 @Embeddable
-public class EscalaMembroPK implements Serializable {
+public class MembrosEscaladosPK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	

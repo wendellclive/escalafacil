@@ -38,13 +38,13 @@ public class Membro implements Serializable {
 	private String email;
 
 	@OneToMany(mappedBy="id.membro")
-	private Set<EscalaMembros> membrosEscalados = new HashSet<>();
+	private Set<MembrosEscalados> membrosEscalados = new HashSet<>();
 	
 	public List<Escala> getEscalas() {
 		
 		List<Escala> lista = new ArrayList<>();
 		
-		for(EscalaMembros x : membrosEscalados) {
+		for(MembrosEscalados x : membrosEscalados) {
 			lista.add(x.getEscala());
 		}
 		return lista;
