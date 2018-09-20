@@ -13,6 +13,7 @@ import com.databuilder.com.br.escalafacil.domain.Grupo;
 import com.databuilder.com.br.escalafacil.domain.Membro;
 import com.databuilder.com.br.escalafacil.domain.Proprietario;
 import com.databuilder.com.br.escalafacil.domain.enums.StatusUsuario;
+import com.databuilder.com.br.escalafacil.domain.enums.TipoEscala;
 import com.databuilder.com.br.escalafacil.repositories.EscalaRepository;
 import com.databuilder.com.br.escalafacil.repositories.GrupoRepository;
 import com.databuilder.com.br.escalafacil.repositories.MembroRepository;
@@ -63,12 +64,12 @@ public class EscalafacilApplication implements CommandLineRunner {
 		
 		membroRepository.saveAll(Arrays.asList(mem1, mem2, mem3));
 
-		Escala esc1 = new Escala(null, "POLICIA MILITAR", "ESCALA DE RUA", "ESCALA DE GUARNICOES", "01", sdf.parse("09/02/1987 00:00"), prop1);
-		Escala esc2 = new Escala(null, "ASSEMBLEIA DE DEUS", "ESCALA DE DIACONATO", "DIACONOS ESCALAS", "01", sdf.parse("11/11/1987 00:00"), prop1);
-		Escala esc3 = new Escala(null, "GUARDA MUNICIPAL", "ESCALA DE VIGILANCIA", "GUARDAS", "02", sdf.parse("11/11/1987 00:00"), prop2);
-		Escala esc4 = new Escala(null, "ASSEMBLEIA DE DEUS", "ESCALA DE CONSELHEIROS", "CONSELHEIRO ESCALAS", "01", sdf.parse("11/11/1987 00:00"), prop2);
-		Escala esc5 = new Escala(null, "ESCOLA ESTADUAL X", "ESCALA DE PROFESSORES", "PROFESSORES ESCALAS", "01", sdf.parse("11/11/1987 00:00"), prop2);
-		Escala esc6 = new Escala(null, "EXERCITO BRASILEIRO", "ESCALA DE SOLDADOS", "SOLDADO ESCALAS", "01", sdf.parse("11/11/1987 00:00"), prop1);
+		Escala esc1 = new Escala(null, "POLICIA MILITAR", "ESCALA DE RUA", "ESCALA DE GUARNICOES", TipoEscala.DIARIA, sdf.parse("09/02/1987 00:00"), prop1);
+		Escala esc2 = new Escala(null, "ASSEMBLEIA DE DEUS", "ESCALA DE DIACONATO", "DIACONOS ESCALAS", TipoEscala.SEMANAL, sdf.parse("11/11/1987 00:00"), prop1);
+		Escala esc3 = new Escala(null, "GUARDA MUNICIPAL", "ESCALA DE VIGILANCIA", "GUARDAS", TipoEscala.E12H24H, sdf.parse("11/11/1987 00:00"), prop2);
+		Escala esc4 = new Escala(null, "ASSEMBLEIA DE DEUS", "ESCALA DE CONSELHEIROS", "CONSELHEIRO ESCALAS", TipoEscala.E24H24H, sdf.parse("11/11/1987 00:00"), prop2);
+		Escala esc5 = new Escala(null, "ESCOLA ESTADUAL X", "ESCALA DE PROFESSORES", "PROFESSORES ESCALAS", TipoEscala.E24H48H, sdf.parse("11/11/1987 00:00"), prop2);
+		Escala esc6 = new Escala(null, "EXERCITO BRASILEIRO", "ESCALA DE SOLDADOS", "SOLDADO ESCALAS", TipoEscala.SEMANAL, sdf.parse("11/11/1987 00:00"), prop1);
 		
 		prop1.getEscalas().addAll(Arrays.asList(esc1, esc2, esc6));
 		prop2.getEscalas().addAll(Arrays.asList(esc3, esc4, esc5));

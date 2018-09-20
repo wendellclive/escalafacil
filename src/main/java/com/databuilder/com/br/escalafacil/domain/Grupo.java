@@ -2,7 +2,6 @@ package com.databuilder.com.br.escalafacil.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,12 +22,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name="grupo")
+@Getter
+@Setter
 public class Grupo implements Serializable {
 
 	private static final long serialVersionUID = 5914356445552675840L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter @Setter private Integer id;
-	@Column(nullable = false, length = 50)
-	@Getter @Setter private String nome;
+	private Integer id;
+	private String nome;
 }

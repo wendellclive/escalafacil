@@ -50,7 +50,7 @@ public class Proprietario implements Serializable {
 	@JsonManagedReference
 	@OneToMany(mappedBy="proprietario")
 	public List<Escala> escalas = new ArrayList<>();
-
+	
 	public Proprietario(Integer id, String email, String senha, String nome, Date dataCadastro,Date dataDeNascimento, StatusUsuario statusUsuario,
 			Integer tentativasDeAcesso) {
 		super();
