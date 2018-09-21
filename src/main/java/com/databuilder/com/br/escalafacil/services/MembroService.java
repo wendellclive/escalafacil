@@ -1,12 +1,15 @@
 package com.databuilder.com.br.escalafacil.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.databuilder.com.br.escalafacil.domain.Membro;
 import com.databuilder.com.br.escalafacil.repositories.MembroRepository;
+import com.databuilder.com.br.escalafacil.services.exceptions.DataIntegrityException;
 import com.databuilder.com.br.escalafacil.services.exceptions.ObjectNotFoundException;
 
 
@@ -24,4 +27,34 @@ public class MembroService {
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Membro.class.getName()));
 		
 	}
+	
+
+	public Membro insert(Membro obj) {
+
+		obj.setId(null); // faz o método entender que se não houver ID então é uma alteração
+		return reposit.save(obj);
+
+	}
+
+	public Membro update(Membro obj) {
+
+		find(obj.getId());
+		return reposit.save(obj);
+
+	}
+
+	public void delete(Integer id) {
+
+		find(id);
+		try {
+			reposit.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Não é possivel Excluir um Membro");
+		}
+	}
+	
+	public List<Membro> findAll() {
+		return reposit.findAll();
+	}
+	
 }
