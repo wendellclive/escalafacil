@@ -69,7 +69,7 @@ public class EscalafacilApplication implements CommandLineRunner {
 		Membro mem4 = new Membro(null, "JOAO HENRIQUE", "beltrano@gmail.com");
 		Membro mem5 = new Membro(null, "APOLINO SABINO", "beltrano@gmail.com");
 		
-		membroRepository.saveAll(Arrays.asList(mem1, mem2, mem3));
+		membroRepository.saveAll(Arrays.asList(mem1, mem2, mem3, mem4, mem5));
 
 		Escala esc1 = new Escala(null, "POLICIA MILITAR", "ESCALA DE RUA", "ESCALA DE GUARNICOES", TipoEscala.DIARIA, sdf.parse("09/02/1987 00:00"), prop1);
 		Escala esc2 = new Escala(null, "ASSEMBLEIA DE DEUS", "ESCALA DE DIACONATO", "DIACONOS ESCALAS", TipoEscala.SEMANAL, sdf.parse("11/11/1987 00:00"), prop1);
@@ -94,21 +94,24 @@ public class EscalafacilApplication implements CommandLineRunner {
 		MembrosEscalados mesc8 = new MembrosEscalados(mem4, esc4, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
 		MembrosEscalados mesc9 = new MembrosEscalados(mem5, esc5, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
 		MembrosEscalados mesc10 = new MembrosEscalados(mem5, esc6, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
+		MembrosEscalados mesc11 = new MembrosEscalados(mem1, esc1, sdf.parse("20/09/2018 08:00"), sdf.parse("20/09/2018 18:00"), "PROFESSOR");
+		MembrosEscalados mesc12 = new MembrosEscalados(mem2, esc1, sdf.parse("20/09/2018 08:00"), sdf.parse("20/09/2018 18:00"), "PROFESSOR");
+		MembrosEscalados mesc13 = new MembrosEscalados(mem3, esc1, sdf.parse("20/09/2018 08:00"), sdf.parse("20/09/2018 18:00"), "PROFESSOR");
 		
-		mem1.getMembrosEscalados().addAll(Arrays.asList(mesc1, mesc2));
-		mem2.getMembrosEscalados().addAll(Arrays.asList(mesc3, mesc4));
-		mem3.getMembrosEscalados().addAll(Arrays.asList(mesc5, mesc6));
+		mem1.getMembrosEscalados().addAll(Arrays.asList(mesc1, mesc2, mesc11));
+		mem2.getMembrosEscalados().addAll(Arrays.asList(mesc3, mesc4, mesc12));
+		mem3.getMembrosEscalados().addAll(Arrays.asList(mesc5, mesc6, mesc13));
 		mem4.getMembrosEscalados().addAll(Arrays.asList(mesc7, mesc8));
 		mem5.getMembrosEscalados().addAll(Arrays.asList(mesc9, mesc10));
 		
-		esc1.getMembrosEscalados().addAll(Arrays.asList(mesc1, mesc5));
+		esc1.getMembrosEscalados().addAll(Arrays.asList(mesc1, mesc5, mesc11, mesc12, mesc13));
 		esc2.getMembrosEscalados().addAll(Arrays.asList(mesc2, mesc6));
 		esc3.getMembrosEscalados().addAll(Arrays.asList(mesc3, mesc7));
 		esc4.getMembrosEscalados().addAll(Arrays.asList(mesc4, mesc8));
 		esc5.getMembrosEscalados().addAll(Arrays.asList(mesc9));
 		esc6.getMembrosEscalados().addAll(Arrays.asList(mesc10));
 	
-		membrosEscaladosRepository.saveAll(Arrays.asList(mesc1, mesc2, mesc3, mesc4));
+		membrosEscaladosRepository.saveAll(Arrays.asList(mesc1, mesc2, mesc3, mesc4, mesc5, mesc6, mesc7, mesc8, mesc9, mesc10, mesc11, mesc12, mesc13));
 		
 	}
 }
