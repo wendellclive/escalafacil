@@ -25,7 +25,7 @@ public class EscalaResource {
 	
 	// Associado ao verbo HTTP
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) {
+	public ResponseEntity<Escala> find(@PathVariable Integer id) {
 		
 		Escala obj = service.find(id);
 		

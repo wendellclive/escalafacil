@@ -27,7 +27,7 @@ public class ProprietarioResource {
 	
 	// Associado ao verbo HTTP
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) throws ObjectNotFoundException {
+	public ResponseEntity<Proprietario> find(@PathVariable Integer id) throws ObjectNotFoundException {
 		
 		Proprietario obj = service.find(id);
 		

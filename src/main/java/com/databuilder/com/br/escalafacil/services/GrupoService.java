@@ -29,5 +29,11 @@ public class GrupoService {
 		
 	}
 	
+	public Grupo update(Grupo obj) {
+		
+		find(obj.getId());
+		return reposit.save(obj);
+		
+	}
 	
 }

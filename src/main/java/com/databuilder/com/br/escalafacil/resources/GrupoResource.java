@@ -29,7 +29,7 @@ public class GrupoResource {
 
 	// Associado ao verbo HTTP
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) {
+	public ResponseEntity<Grupo> find(@PathVariable Integer id) {
 
 		Grupo obj = service.find(id);
 
@@ -40,9 +40,22 @@ public class GrupoResource {
 	// Método para chamar Servico de inserir objeto
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Grupo obj) {
+		
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
+		
 	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Grupo obj, @PathVariable Integer id) {
+
+		obj.setId(id);
+		obj = service.update(obj);
+		
+		return ResponseEntity.noContent().build();
+		
+	}
+	
 }

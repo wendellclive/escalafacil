@@ -25,7 +25,7 @@ public class MembroResource {
 	
 	// Associado ao verbo HTTP
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) {
+	public ResponseEntity<Membro> find(@PathVariable Integer id) {
 		
 		Membro obj = service.find(id);
 		
