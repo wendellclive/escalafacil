@@ -13,7 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.databuilder.com.br.escalafacil.domain.enums.StatusUsuario;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -47,7 +46,7 @@ public class Proprietario implements Serializable {
 	private Integer statusUsuario;
 	private Integer tentativasDeAcesso;
 	
-	@JsonManagedReference
+
 	@OneToMany(mappedBy="proprietario")
 	public List<Escala> escalas = new ArrayList<>();
 	
