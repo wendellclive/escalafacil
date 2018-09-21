@@ -6,14 +6,17 @@ import java.util.Date;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Entity
-public class MembrosEscalados implements Serializable{
-	
+public class MembrosEscalados implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
+	@JsonIgnore
 	@EmbeddedId
 	private MembrosEscaladosPK id = new MembrosEscaladosPK();
 
@@ -21,8 +24,7 @@ public class MembrosEscalados implements Serializable{
 	private Date dataHoraFim;
 	private String funcao;
 
-	public MembrosEscalados(Membro membro, Escala escala, Date dataHoraInicio, Date dataHoraFim,
-			String funcao) {
+	public MembrosEscalados(Membro membro, Escala escala, Date dataHoraInicio, Date dataHoraFim, String funcao) {
 		super();
 		id.setMembro(membro);
 		id.setEscala(escala);
@@ -31,10 +33,12 @@ public class MembrosEscalados implements Serializable{
 		this.funcao = funcao;
 	}
 
+	@JsonIgnore
 	public Membro getMembro() {
 		return id.getMembro();
 	}
-
+	
+	@JsonIgnore
 	public Escala getEscala() {
 		return id.getEscala();
 	}

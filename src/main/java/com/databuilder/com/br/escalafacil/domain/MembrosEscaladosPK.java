@@ -10,20 +10,20 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+@Embeddable
 @EqualsAndHashCode
 @Getter
 @Setter
-@Embeddable
 public class MembrosEscaladosPK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@ManyToOne
-	@JoinColumn(name="membro_id")
+	@JoinColumn(name = "membro_id")
 	private Membro membro;
-	
+
 	@ManyToOne
-	@JoinColumn(name="escala_id")
+	@JoinColumn(name = "escala_id")
 	private Escala escala;
-	
+
 }

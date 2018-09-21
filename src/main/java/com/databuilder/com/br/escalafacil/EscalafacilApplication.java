@@ -87,28 +87,28 @@ public class EscalafacilApplication implements CommandLineRunner {
 		MembrosEscalados mesc1 = new MembrosEscalados(mem1, esc1, sdf.parse("20/09/2018 08:00"), sdf.parse("20/09/2018 18:00"), "PROFESSOR");
 		MembrosEscalados mesc2 = new MembrosEscalados(mem1, esc2, sdf.parse("21/09/2018 08:00"), sdf.parse("21/09/2018 18:00"), "PROFESSOR");
 		MembrosEscalados mesc3 = new MembrosEscalados(mem2, esc3, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
-//		MembrosEscalados mesc4 = new MembrosEscalados(mem2, esc4, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
-//		MembrosEscalados mesc5 = new MembrosEscalados(mem3, esc1, sdf.parse("20/09/2018 08:00"), sdf.parse("20/09/2018 18:00"), "PROFESSOR");
-//		MembrosEscalados mesc6 = new MembrosEscalados(mem3, esc2, sdf.parse("21/09/2018 08:00"), sdf.parse("21/09/2018 18:00"), "PROFESSOR");
-//		MembrosEscalados mesc7 = new MembrosEscalados(mem4, esc3, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
-//		MembrosEscalados mesc8 = new MembrosEscalados(mem4, esc4, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
-//		MembrosEscalados mesc9 = new MembrosEscalados(mem5, esc5, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
-//		MembrosEscalados mesc10 = new MembrosEscalados(mem5, esc6, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
+		MembrosEscalados mesc4 = new MembrosEscalados(mem2, esc4, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
+		MembrosEscalados mesc5 = new MembrosEscalados(mem3, esc1, sdf.parse("20/09/2018 08:00"), sdf.parse("20/09/2018 18:00"), "PROFESSOR");
+		MembrosEscalados mesc6 = new MembrosEscalados(mem3, esc2, sdf.parse("21/09/2018 08:00"), sdf.parse("21/09/2018 18:00"), "PROFESSOR");
+		MembrosEscalados mesc7 = new MembrosEscalados(mem4, esc3, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
+		MembrosEscalados mesc8 = new MembrosEscalados(mem4, esc4, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
+		MembrosEscalados mesc9 = new MembrosEscalados(mem5, esc5, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
+		MembrosEscalados mesc10 = new MembrosEscalados(mem5, esc6, sdf.parse("19/09/2018 08:00"), sdf.parse("19/09/2018 18:00"), "PROFESSOR");
 		
 		mem1.getMembrosEscalados().addAll(Arrays.asList(mesc1, mesc2));
-		mem2.getMembrosEscalados().addAll(Arrays.asList(mesc3));
-//		mem3.getMembrosEscalados().addAll(Arrays.asList(mesc5, mesc6));
-//		mem4.getMembrosEscalados().addAll(Arrays.asList(mesc7, mesc8));
-//		mem5.getMembrosEscalados().addAll(Arrays.asList(mesc9, mesc10));
+		mem2.getMembrosEscalados().addAll(Arrays.asList(mesc3, mesc4));
+		mem3.getMembrosEscalados().addAll(Arrays.asList(mesc5, mesc6));
+		mem4.getMembrosEscalados().addAll(Arrays.asList(mesc7, mesc8));
+		mem5.getMembrosEscalados().addAll(Arrays.asList(mesc9, mesc10));
 		
-		esc1.getMembrosEscalados().addAll(Arrays.asList(mesc1));
-		esc2.getMembrosEscalados().addAll(Arrays.asList(mesc2));
-		esc3.getMembrosEscalados().addAll(Arrays.asList(mesc3));
-//		esc4.getMembrosEscalados().addAll(Arrays.asList(mesc4, mesc8));
-//		esc5.getMembrosEscalados().addAll(Arrays.asList(mesc9));
-//		esc6.getMembrosEscalados().addAll(Arrays.asList(mesc10));
+		esc1.getMembrosEscalados().addAll(Arrays.asList(mesc1, mesc5));
+		esc2.getMembrosEscalados().addAll(Arrays.asList(mesc2, mesc6));
+		esc3.getMembrosEscalados().addAll(Arrays.asList(mesc3, mesc7));
+		esc4.getMembrosEscalados().addAll(Arrays.asList(mesc4, mesc8));
+		esc5.getMembrosEscalados().addAll(Arrays.asList(mesc9));
+		esc6.getMembrosEscalados().addAll(Arrays.asList(mesc10));
 	
-		membrosEscaladosRepository.saveAll(Arrays.asList(mesc1, mesc2, mesc3));
+		membrosEscaladosRepository.saveAll(Arrays.asList(mesc1, mesc2, mesc3, mesc4));
 		
 	}
 }
