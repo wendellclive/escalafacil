@@ -2,6 +2,7 @@ package com.databuilder.com.br.escalafacil.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.databuilder.com.br.escalafacil.domain.Escala;
+import com.databuilder.com.br.escalafacil.dto.EscalaDTO;
 import com.databuilder.com.br.escalafacil.services.EscalaService;
 
 /**
@@ -68,11 +70,11 @@ public class EscalaResource {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Escala>> findAll() {
+	public ResponseEntity<List<EscalaDTO>> findAll() {
 
 		List<Escala> list = service.findAll();
-
-		return ResponseEntity.ok().body(list);
+		List<EscalaDTO> listDto = list.stream().map(obj -> new EscalaDTO(obj)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDto);
 
 	}
 
