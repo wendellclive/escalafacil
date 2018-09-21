@@ -20,6 +20,14 @@ public class GrupoService {
 		Optional<Grupo> obj = reposit.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Grupo.class.getName()));
-
 	}
+	
+	public Grupo insert(Grupo obj) {
+		
+		obj.setId(null); //faz o método entender que se não houver ID então é uma alteração
+		return reposit.save(obj);
+		
+	}
+	
+	
 }
