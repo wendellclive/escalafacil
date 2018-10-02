@@ -2,6 +2,7 @@ package com.databuilder.com.br.escalafacil;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -48,22 +49,22 @@ public class EscalafacilApplication implements CommandLineRunner {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		
-		Proprietario prop1 = new Proprietario(null, "teste@teste.com.br", "ADEROGILDO DA SILVA", "123456", sdf.parse("09/02/1987 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.ATIVO, 0);
-		Proprietario prop2 = new Proprietario (null, "teste@teste.com.br", "SIGFREID DA SILVA", "123456", sdf.parse("01/09/1987 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.ATIVO, 0);
-		Proprietario prop3 = new Proprietario (null, "teste@teste.com.br", "JORGE NAILTON", "123456",sdf.parse("13/12/1990 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop4 = new Proprietario (null, "teste@teste.com.br", "LEANDRO LIANDERSON", "123456", sdf.parse("02/05/1980 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.INATIVO, 0);
-		Proprietario prop5 = new Proprietario (null, "teste@teste.com.br", "CASSIO CASSIANO", "123456", sdf.parse("09/10/2000 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop6 = new Proprietario (null, "teste@teste.com.br", "PEREIRA CASSIANO", "123456", sdf.parse("09/10/2000 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop7 = new Proprietario (null, "teste@teste.com.br", "SALVIO SILVA", "123456", sdf.parse("09/10/2000 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop8 = new Proprietario (null, "teste@teste.com.br", "CARLOS ALITNO", "123456", sdf.parse("09/10/2000 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop9 = new Proprietario (null, "teste@teste.com.br", "JOSEFA FERREIRA", "123456", sdf.parse("09/10/2000 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop10 = new Proprietario (null, "teste@teste.com.br", "LACAIOS PARREIRA", "123456", sdf.parse("09/10/2000 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop11 = new Proprietario (null, "teste@teste.com.br", "JOSE FERNANDO RIBEIRA", "123456", sdf.parse("09/10/2000 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop12 = new Proprietario (null, "teste@teste.com.br", "GABRIEL CELESTINO", "123456", sdf.parse("09/10/2000 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop13 = new Proprietario (null, "teste@teste.com.br", "CASSIA CELESTINO", "123456", sdf.parse("09/10/2000 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop14 = new Proprietario (null, "teste@teste.com.br", "WENDELL CLIVE", "123456", sdf.parse("09/10/2000 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop15 = new Proprietario (null, "teste@teste.com.br", "REBEKAH CELESTINO", "123456", sdf.parse("09/10/2000 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop16 = new Proprietario (null, "teste@teste.com.br", "MARIA DO SOCORRO PINTO", "123456", sdf.parse("09/10/2000 00:00"), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop1 = new Proprietario(null, "teste@teste.com.br", "ADEROGILDO DA SILVA", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.ATIVO, 0);
+		Proprietario prop2 = new Proprietario (null, "teste@teste.com.br", "SIGFREID DA SILVA", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.ATIVO, 0);
+		Proprietario prop3 = new Proprietario (null, "teste@teste.com.br", "JORGE NAILTON", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop4 = new Proprietario (null, "teste@teste.com.br", "LEANDRO LIANDERSON", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.INATIVO, 0);
+		Proprietario prop5 = new Proprietario (null, "teste@teste.com.br", "CASSIO CASSIANO", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop6 = new Proprietario (null, "teste@teste.com.br", "PEREIRA CASSIANO", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop7 = new Proprietario (null, "teste@teste.com.br", "SALVIO SILVA", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop8 = new Proprietario (null, "teste@teste.com.br", "CARLOS ALITNO", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop9 = new Proprietario (null, "teste@teste.com.br", "JOSEFA FERREIRA", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop10 = new Proprietario (null, "teste@teste.com.br", "LACAIOS PARREIRA", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop11 = new Proprietario (null, "teste@teste.com.br", "JOSE FERNANDO RIBEIRA", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop12 = new Proprietario (null, "teste@teste.com.br", "GABRIEL CELESTINO", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop13 = new Proprietario (null, "teste@teste.com.br", "CASSIA CELESTINO", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop14 = new Proprietario (null, "teste@teste.com.br", "WENDELL CLIVE", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop15 = new Proprietario (null, "teste@teste.com.br", "REBEKAH CELESTINO", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop16 = new Proprietario (null, "teste@teste.com.br", "MARIA DO SOCORRO PINTO", "123456", new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
 		
 		
 		Grupo gru1 = new Grupo(null, "GRUPO 01");
@@ -93,7 +94,7 @@ public class EscalafacilApplication implements CommandLineRunner {
 		prop1.getEscalas().addAll(Arrays.asList(esc1, esc2, esc6));
 		prop2.getEscalas().addAll(Arrays.asList(esc3, esc4, esc5));
 
-		proprietarioRepository.saveAll(Arrays.asList(prop1, prop2,prop3, prop4, prop6, prop7, prop8, prop9, prop10, prop11, prop12, prop13, prop14, prop15, prop16));
+		proprietarioRepository.saveAll(Arrays.asList(prop1, prop2,prop3, prop4, prop5, prop6, prop7, prop8, prop9, prop10, prop11, prop12, prop13, prop14, prop15, prop16));
 		escalaRepository.saveAll(Arrays.asList(esc1, esc2, esc3, esc4, esc5, esc6));		
 
 		MembrosEscalados mesc1 = new MembrosEscalados(mem1, esc1, sdf.parse("20/09/2018 08:00"), sdf.parse("20/09/2018 18:00"), "PROFESSOR");
