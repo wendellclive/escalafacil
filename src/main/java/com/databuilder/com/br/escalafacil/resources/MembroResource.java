@@ -16,6 +16,8 @@ import com.databuilder.com.br.escalafacil.domain.Membro;
 import com.databuilder.com.br.escalafacil.services.MembroService;
 
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 /**
  * Created by Wendell Clive Santos de Lira - Email: wendell.clive@gmail.com
@@ -42,7 +44,7 @@ public class MembroResource {
 	}
 
 	// Método para chamar Servico de inserir objeto
-	@ApiOperation(value = "Insere novo Membro")
+	@ApiOperation(value = "Insere Membro")
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Membro obj) {
 
@@ -64,7 +66,10 @@ public class MembroResource {
 	}
 
 	// Associado ao verbo HTTP
-	@ApiOperation(value="Deleta por id")
+	@ApiOperation(value="Remove Membro")
+	@ApiResponses(value = {
+			@ApiResponse(code = 400, message = "Não é possível excluir um Membro que está em várias Escalas"),
+			@ApiResponse(code = 404, message = "Código inexistente") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 
@@ -73,7 +78,7 @@ public class MembroResource {
 
 	}
 
-	@ApiOperation(value="Lista todos os Membros")
+	@ApiOperation(value="Retorna todos os Membros")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Membro>> findAll() {
 

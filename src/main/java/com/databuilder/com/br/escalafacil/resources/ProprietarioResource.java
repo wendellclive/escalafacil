@@ -16,6 +16,8 @@ import com.databuilder.com.br.escalafacil.domain.Proprietario;
 import com.databuilder.com.br.escalafacil.services.ProprietarioService;
 
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import javassist.tools.rmi.ObjectNotFoundException;
 
 /**
@@ -66,7 +68,10 @@ public class ProprietarioResource {
 	}
 	
 	// Associado ao verbo HTTP
-	@ApiOperation(value="Deleta Proprietario por Id")
+	@ApiOperation(value="Remove Proprietario")
+	@ApiResponses(value = {
+			@ApiResponse(code = 400, message = "Não é possível excluir um Proprietário que tem Escala criada"),
+			@ApiResponse(code = 404, message = "Código inexistente") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 
@@ -75,7 +80,7 @@ public class ProprietarioResource {
 
 	}
 	
-	@ApiOperation(value="Listagem geral de Proprietarios")
+	@ApiOperation(value="Retorna todos os Proprietários")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Proprietario>> findAll() {
 

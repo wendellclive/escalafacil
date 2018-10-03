@@ -20,6 +20,8 @@ import com.databuilder.com.br.escalafacil.dto.EscalaDTO;
 import com.databuilder.com.br.escalafacil.services.EscalaService;
 
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 /**
  * Created by Wendell Clive Santos de Lira - Email: wendell.clive@gmail.com
@@ -56,7 +58,7 @@ public class EscalaResource {
 
 	}
 
-	@ApiOperation(value="Atualiza Escala por Id")
+	@ApiOperation(value="Atualiza Escala")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Escala obj, @PathVariable Integer id) {
 
@@ -68,7 +70,10 @@ public class EscalaResource {
 	}
 
 	// Associado ao verbo HTTP
-	@ApiOperation(value="Deleta por id")
+	@ApiOperation(value="Remove Escala")
+	@ApiResponses(value = {
+			@ApiResponse(code = 400, message = "Não é possível excluir uma Escala que possui membros"),
+			@ApiResponse(code = 404, message = "Código inexistente") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 
@@ -77,7 +82,7 @@ public class EscalaResource {
 
 	}
 
-	@ApiOperation(value="Listagem geral")
+	@ApiOperation(value="Retorna todas as Escalas")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<EscalaDTO>> findAll() {
 
@@ -87,7 +92,7 @@ public class EscalaResource {
 
 	}
 
-	@ApiOperation(value="Lista X linhas por pagina")
+	@ApiOperation(value="Retorna Escalas de até 24 linhas por pagina")
 	@RequestMapping(value="/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<EscalaDTO>> findPage(
 			@RequestParam(value="page", defaultValue="0") Integer page, 
