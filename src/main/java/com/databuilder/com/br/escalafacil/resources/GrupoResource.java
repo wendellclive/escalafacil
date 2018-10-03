@@ -15,6 +15,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.databuilder.com.br.escalafacil.domain.Grupo;
 import com.databuilder.com.br.escalafacil.services.GrupoService;
 
+import io.swagger.annotations.ApiOperation;
+
 /**
  * Created by Wendell Clive Santos de Lira - Email: wendell.clive@gmail.com
  * Data: 14/09/2018
@@ -29,6 +31,7 @@ public class GrupoResource {
 	private GrupoService service;
 
 	// Associado ao verbo HTTP
+	@ApiOperation(value="Busca por id")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Grupo> find(@PathVariable Integer id) {
 
@@ -39,6 +42,7 @@ public class GrupoResource {
 	}
 
 	// Método para chamar Servico de inserir objeto
+	@ApiOperation(value="Insere novo Grupo")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Grupo obj) {
 		
@@ -49,6 +53,7 @@ public class GrupoResource {
 		
 	}
 	
+	@ApiOperation(value="Atualiza Grupo")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Grupo obj, @PathVariable Integer id) {
 
@@ -60,6 +65,7 @@ public class GrupoResource {
 	}
 	
 	// Associado ao verbo HTTP
+	@ApiOperation(value="Detela por Id")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 
@@ -68,6 +74,7 @@ public class GrupoResource {
 
 	}
 	
+	@ApiOperation(value="Lista todos Grupos")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Grupo>> findAll() {
 

@@ -19,6 +19,8 @@ import com.databuilder.com.br.escalafacil.domain.Escala;
 import com.databuilder.com.br.escalafacil.dto.EscalaDTO;
 import com.databuilder.com.br.escalafacil.services.EscalaService;
 
+import io.swagger.annotations.ApiOperation;
+
 /**
  * Created by Wendell Clive Santos de Lira - Email: wendell.clive@gmail.com
  * Data: 14/09/2018
@@ -33,6 +35,7 @@ public class EscalaResource {
 	private EscalaService service;
 
 	// Associado ao verbo HTTP
+	@ApiOperation(value="Busca Escala por id")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Escala> find(@PathVariable Integer id) {
 
@@ -43,6 +46,7 @@ public class EscalaResource {
 	}
 
 	// Método para chamar Servico de inserir objeto
+	@ApiOperation(value="Insere nova Escala")
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Escala obj) {
 
@@ -52,6 +56,7 @@ public class EscalaResource {
 
 	}
 
+	@ApiOperation(value="Atualiza Escala por Id")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Escala obj, @PathVariable Integer id) {
 
@@ -63,6 +68,7 @@ public class EscalaResource {
 	}
 
 	// Associado ao verbo HTTP
+	@ApiOperation(value="Deleta por id")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 
@@ -71,6 +77,7 @@ public class EscalaResource {
 
 	}
 
+	@ApiOperation(value="Listagem geral")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<EscalaDTO>> findAll() {
 
@@ -80,6 +87,7 @@ public class EscalaResource {
 
 	}
 
+	@ApiOperation(value="Lista X linhas por pagina")
 	@RequestMapping(value="/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<EscalaDTO>> findPage(
 			@RequestParam(value="page", defaultValue="0") Integer page, 

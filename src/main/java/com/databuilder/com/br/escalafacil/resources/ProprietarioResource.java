@@ -15,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.databuilder.com.br.escalafacil.domain.Proprietario;
 import com.databuilder.com.br.escalafacil.services.ProprietarioService;
 
+import io.swagger.annotations.ApiOperation;
 import javassist.tools.rmi.ObjectNotFoundException;
 
 /**
@@ -31,6 +32,7 @@ public class ProprietarioResource {
 	private ProprietarioService service;
 	
 	// Associado ao verbo HTTP
+	@ApiOperation(value="Busca Proprietario por id")
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Proprietario> find(@PathVariable Integer id) throws ObjectNotFoundException {
 		
@@ -41,6 +43,7 @@ public class ProprietarioResource {
 	}
 
 	// Método para chamar Servico de inserir objeto
+	@ApiOperation(value="Insere Proprietario")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Proprietario obj) {
 		
@@ -51,6 +54,7 @@ public class ProprietarioResource {
 		
 	}
 	
+	@ApiOperation(value="Atualiza Proprietario")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Proprietario obj, @PathVariable Integer id) {
 
@@ -62,6 +66,7 @@ public class ProprietarioResource {
 	}
 	
 	// Associado ao verbo HTTP
+	@ApiOperation(value="Deleta Proprietario por Id")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 
@@ -70,6 +75,7 @@ public class ProprietarioResource {
 
 	}
 	
+	@ApiOperation(value="Listagem geral de Proprietarios")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Proprietario>> findAll() {
 
