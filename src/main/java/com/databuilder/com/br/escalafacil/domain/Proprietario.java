@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.databuilder.com.br.escalafacil.domain.enums.StatusUsuario;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -39,7 +40,10 @@ public class Proprietario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String email;
+	
+	@JsonIgnore
 	private String senha;
+	
 	private String nome;
 	private Date dataDeNascimento;
 	private Date dataCadastro;

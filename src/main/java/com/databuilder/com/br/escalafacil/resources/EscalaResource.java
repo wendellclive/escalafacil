@@ -92,7 +92,7 @@ public class EscalaResource {
 
 	}
 
-	@ApiOperation(value="Retorna Escalas de até 24 linhas por pagina")
+	@ApiOperation(value="Retorna Escalas até 24 linhas por pagina")
 	@RequestMapping(value="/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<EscalaDTO>> findPage(
 			@RequestParam(value="page", defaultValue="0") Integer page, 
