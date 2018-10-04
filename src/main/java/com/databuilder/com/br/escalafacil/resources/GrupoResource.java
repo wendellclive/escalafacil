@@ -3,6 +3,8 @@ package com.databuilder.com.br.escalafacil.resources;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.databuilder.com.br.escalafacil.domain.Grupo;
+import com.databuilder.com.br.escalafacil.dto.GrupoDTO;
 import com.databuilder.com.br.escalafacil.services.GrupoService;
 
 import io.swagger.annotations.ApiOperation;
@@ -48,8 +51,8 @@ public class GrupoResource {
 	// Método para chamar Servico de inserir objeto
 	@ApiOperation(value="Insere Grupo")
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Grupo obj) {
-		
+	public ResponseEntity<Void> insert(@Valid @RequestBody GrupoDTO objDto) {
+		Grupo obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
@@ -59,8 +62,8 @@ public class GrupoResource {
 	
 	@ApiOperation(value="Atualiza Grupo")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Grupo obj, @PathVariable Integer id) {
-
+	public ResponseEntity<Void> update(@Valid @RequestBody GrupoDTO objDto, @PathVariable Integer id) {
+		Grupo obj = service.fromDTO(objDto);
 		obj.setId(id);
 		obj = service.update(obj);
 		

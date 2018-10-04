@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.databuilder.com.br.escalafacil.domain.Proprietario;
+import com.databuilder.com.br.escalafacil.dto.ProprietarioDTO;
 import com.databuilder.com.br.escalafacil.repositories.ProprietarioRepository;
 import com.databuilder.com.br.escalafacil.services.exceptions.DataIntegrityException;
 import com.databuilder.com.br.escalafacil.services.exceptions.ObjectNotFoundException;
@@ -62,5 +63,12 @@ public class ProprietarioService {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		
 		return reposit.findAll(pageRequest);
+	}
+	
+	public Proprietario fromDTO(ProprietarioDTO objDto) {
+		return new Proprietario(objDto.getId(), objDto.getNome(), 
+				objDto.getEmail(), objDto.getSenha(), 
+				objDto.getDataDeNascimento(), objDto.getDataCadastro(), 
+				objDto.getStatusUsuario(), objDto.getTentativasDeAcesso());
 	}
 }

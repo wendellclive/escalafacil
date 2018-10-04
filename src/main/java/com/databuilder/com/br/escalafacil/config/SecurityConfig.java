@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private Environment env;
 	
 	private static final String[] PUBLIC_MATCHERS = { 
-			"/h2-console/**", 
+			"/h2-console/**" 
 			};
 
 	private static final String[] PUBLIC_MATCHERS_GET = {  
@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		if (Arrays.asList(env.getActiveProfiles()).contains("dbescalafacil")) {
+		if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
 			http.headers().frameOptions().disable();
 		}
 

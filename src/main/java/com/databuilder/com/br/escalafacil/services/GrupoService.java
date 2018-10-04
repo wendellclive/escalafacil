@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.databuilder.com.br.escalafacil.domain.Grupo;
+import com.databuilder.com.br.escalafacil.dto.GrupoDTO;
 import com.databuilder.com.br.escalafacil.repositories.GrupoRepository;
 import com.databuilder.com.br.escalafacil.services.exceptions.DataIntegrityException;
 import com.databuilder.com.br.escalafacil.services.exceptions.ObjectNotFoundException;
@@ -62,4 +63,9 @@ public class GrupoService {
 		
 		return reposit.findAll(pageRequest);
 	}
+	
+	public Grupo fromDTO(GrupoDTO objDto) {
+		return new Grupo(objDto.getId(), objDto.getNome());
+	}
+	
 }
