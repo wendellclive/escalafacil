@@ -79,16 +79,22 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-security</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>io.jsonwebtoken</groupId>
-		    <artifactId>jjwt</artifactId>
-		    <version>0.9.0</version>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.0</version>
 		</dependency>
-				
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
 		<!-- <dependency> <groupId>org.liquibase</groupId> <artifactId>liquibase-core</artifactId> 
 			<version>3.6.2</version> </dependency> <dependency> <groupId>org.liquibase</groupId> 
 			<artifactId>liquibase-maven-plugin</artifactId> <version>3.6.2</version> 
