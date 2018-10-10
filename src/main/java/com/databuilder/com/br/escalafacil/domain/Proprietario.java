@@ -40,11 +40,10 @@ public class Proprietario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String email;
+	private String nome;
 	
 	@JsonIgnore
 	private String senha;
-	
-	private String nome;
 	private Date dataDeNascimento;
 	private Date dataCadastro;
 	private Integer statusUsuario;
@@ -54,13 +53,13 @@ public class Proprietario implements Serializable {
 	@OneToMany(mappedBy="proprietario")
 	public List<Escala> escalas = new ArrayList<>();
 	
-	public Proprietario(Integer id, String email, String senha, String nome, Date dataCadastro,Date dataDeNascimento, StatusUsuario statusUsuario,
+	public Proprietario(Integer id, String email, String nome, String senha, Date dataCadastro,Date dataDeNascimento, StatusUsuario statusUsuario,
 			Integer tentativasDeAcesso) {
 		super();
 		this.id = id;
 		this.email = email;
-		this.senha = senha;
 		this.nome = nome;
+		this.senha = senha;
 		this.dataDeNascimento = dataDeNascimento;
 		this.dataCadastro = dataCadastro;
 		this.statusUsuario = statusUsuario.getCodigo();

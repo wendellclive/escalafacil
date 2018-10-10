@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.databuilder.com.br.escalafacil.domain.Escala;
@@ -23,6 +24,9 @@ import com.databuilder.com.br.escalafacil.repositories.ProprietarioRepository;
 
 @Service
 public class DBService {
+
+	@Autowired
+	private BCryptPasswordEncoder pe;
 
 	@Autowired
 	private ProprietarioRepository proprietarioRepository;
@@ -43,37 +47,37 @@ public class DBService {
 
 	public void instantiateTestDatabase() throws ParseException {
 
-		Proprietario prop1 = new Proprietario(null, "teste@teste.com.br", "ADEROGILDO DA SILVA", "123456", new Date(),
+		Proprietario prop1 = new Proprietario(null, "teste@teste.com.br", "ADEROGILDO DA SILVA", pe.encode("123456"), new Date(),
 				sdf.parse("09/02/1987 00:00"), StatusUsuario.ATIVO, 0);
-		Proprietario prop2 = new Proprietario(null, "teste@teste.com.br", "SIGFREID DA SILVA", "123456", new Date(),
+		Proprietario prop2 = new Proprietario(null, "teste@teste.com.br", "SIGFREID DA SILVA", pe.encode("123456"), new Date(),
 				sdf.parse("09/02/1987 00:00"), StatusUsuario.ATIVO, 0);
-		Proprietario prop3 = new Proprietario(null, "teste@teste.com.br", "JORGE NAILTON", "123456", new Date(),
+		Proprietario prop3 = new Proprietario(null, "teste@teste.com.br", "JORGE NAILTON", pe.encode("123456"), new Date(),
 				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop4 = new Proprietario(null, "teste@teste.com.br", "LEANDRO LIANDERSON", "123456", new Date(),
+		Proprietario prop4 = new Proprietario(null, "teste@teste.com.br", "LEANDRO LIANDERSON", pe.encode("123456"), new Date(),
 				sdf.parse("09/02/1987 00:00"), StatusUsuario.INATIVO, 0);
-		Proprietario prop5 = new Proprietario(null, "teste@teste.com.br", "CASSIO CASSIANO", "123456", new Date(),
+		Proprietario prop5 = new Proprietario(null, "teste@teste.com.br", "CASSIO CASSIANO", pe.encode("123456"), new Date(),
 				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop6 = new Proprietario(null, "teste@teste.com.br", "PEREIRA CASSIANO", "123456", new Date(),
+		Proprietario prop6 = new Proprietario(null, "teste@teste.com.br", "PEREIRA CASSIANO", pe.encode("123456"), new Date(),
 				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop7 = new Proprietario(null, "teste@teste.com.br", "SALVIO SILVA", "123456", new Date(),
+		Proprietario prop7 = new Proprietario(null, "teste@teste.com.br", "SALVIO SILVA", pe.encode("123456"), new Date(),
 				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop8 = new Proprietario(null, "teste@teste.com.br", "CARLOS ALITNO", "123456", new Date(),
+		Proprietario prop8 = new Proprietario(null, "teste@teste.com.br", "CARLOS ALITNO", pe.encode("123456"), new Date(),
 				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop9 = new Proprietario(null, "teste@teste.com.br", "JOSEFA FERREIRA", "123456", new Date(),
+		Proprietario prop9 = new Proprietario(null, "teste@teste.com.br", "JOSEFA FERREIRA", pe.encode("123456"), new Date(),
 				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop10 = new Proprietario(null, "teste@teste.com.br", "LACAIOS PARREIRA", "123456", new Date(),
+		Proprietario prop10 = new Proprietario(null, "teste@teste.com.br", "LACAIOS PARREIRA", pe.encode("123456"), new Date(),
 				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop11 = new Proprietario(null, "teste@teste.com.br", "JOSE FERNANDO RIBEIRA", "123456",
+		Proprietario prop11 = new Proprietario(null, "teste@teste.com.br", "JOSE FERNANDO RIBEIRA", pe.encode("123456"),
 				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop12 = new Proprietario(null, "teste@teste.com.br", "GABRIEL CELESTINO", "123456", new Date(),
+		Proprietario prop12 = new Proprietario(null, "teste@teste.com.br", "GABRIEL CELESTINO", pe.encode("123456"), new Date(),
 				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop13 = new Proprietario(null, "teste@teste.com.br", "CASSIA CELESTINO", "123456", new Date(),
+		Proprietario prop13 = new Proprietario(null, "teste@teste.com.br", "CASSIA CELESTINO", pe.encode("123456"), new Date(),
 				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop14 = new Proprietario(null, "teste@teste.com.br", "WENDELL CLIVE", "123456", new Date(),
+		Proprietario prop14 = new Proprietario(null, "teste@teste.com.br", "WENDELL CLIVE", pe.encode("123456"), new Date(),
 				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop15 = new Proprietario(null, "teste@teste.com.br", "REBEKAH CELESTINO", "123456", new Date(),
+		Proprietario prop15 = new Proprietario(null, "teste@teste.com.br", "REBEKAH CELESTINO", pe.encode("123456"), new Date(),
 				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop16 = new Proprietario(null, "teste@teste.com.br", "MARIA DO SOCORRO PINTO", "123456",
+		Proprietario prop16 = new Proprietario(null, "teste@teste.com.br", "MARIA DO SOCORRO PINTO", pe.encode("123456"),
 				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
 
 		Grupo gru1 = new Grupo(null, "GRUPO 01");

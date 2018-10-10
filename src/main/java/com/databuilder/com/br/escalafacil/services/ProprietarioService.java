@@ -8,6 +8,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.databuilder.com.br.escalafacil.domain.Proprietario;
@@ -19,6 +20,9 @@ import com.databuilder.com.br.escalafacil.services.exceptions.ObjectNotFoundExce
 @Service
 public class ProprietarioService {
 
+	@Autowired
+	private BCryptPasswordEncoder pe;
+	
 	@Autowired
 	private ProprietarioRepository reposit;
 	
@@ -67,7 +71,7 @@ public class ProprietarioService {
 	
 	public Proprietario fromDTO(ProprietarioDTO objDto) {
 		return new Proprietario(objDto.getId(), objDto.getNome(), 
-				objDto.getEmail(), objDto.getSenha(), 
+				objDto.getEmail(), pe.encode(objDto.getSenha()), 
 				objDto.getDataDeNascimento(), objDto.getDataCadastro(), 
 				objDto.getStatusUsuario(), objDto.getTentativasDeAcesso());
 	}
