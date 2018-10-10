@@ -14,6 +14,7 @@ import com.databuilder.com.br.escalafacil.domain.Grupo;
 import com.databuilder.com.br.escalafacil.domain.Membro;
 import com.databuilder.com.br.escalafacil.domain.MembrosEscalados;
 import com.databuilder.com.br.escalafacil.domain.Proprietario;
+import com.databuilder.com.br.escalafacil.domain.enums.Perfil;
 import com.databuilder.com.br.escalafacil.domain.enums.StatusUsuario;
 import com.databuilder.com.br.escalafacil.domain.enums.TipoEscala;
 import com.databuilder.com.br.escalafacil.repositories.EscalaRepository;
@@ -47,38 +48,41 @@ public class DBService {
 
 	public void instantiateTestDatabase() throws ParseException {
 
-		Proprietario prop1 = new Proprietario(null, "teste@teste.com.br", "ADEROGILDO DA SILVA", pe.encode("123456"), new Date(),
-				sdf.parse("09/02/1987 00:00"), StatusUsuario.ATIVO, 0);
-		Proprietario prop2 = new Proprietario(null, "teste@teste.com.br", "SIGFREID DA SILVA", pe.encode("123456"), new Date(),
-				sdf.parse("09/02/1987 00:00"), StatusUsuario.ATIVO, 0);
-		Proprietario prop3 = new Proprietario(null, "teste@teste.com.br", "JORGE NAILTON", pe.encode("123456"), new Date(),
-				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop4 = new Proprietario(null, "teste@teste.com.br", "LEANDRO LIANDERSON", pe.encode("123456"), new Date(),
-				sdf.parse("09/02/1987 00:00"), StatusUsuario.INATIVO, 0);
-		Proprietario prop5 = new Proprietario(null, "teste@teste.com.br", "CASSIO CASSIANO", pe.encode("123456"), new Date(),
-				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop6 = new Proprietario(null, "teste@teste.com.br", "PEREIRA CASSIANO", pe.encode("123456"), new Date(),
-				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop7 = new Proprietario(null, "teste@teste.com.br", "SALVIO SILVA", pe.encode("123456"), new Date(),
-				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop8 = new Proprietario(null, "teste@teste.com.br", "CARLOS ALITNO", pe.encode("123456"), new Date(),
-				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop9 = new Proprietario(null, "teste@teste.com.br", "JOSEFA FERREIRA", pe.encode("123456"), new Date(),
-				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop10 = new Proprietario(null, "teste@teste.com.br", "LACAIOS PARREIRA", pe.encode("123456"), new Date(),
-				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop1 = new Proprietario(null, "teste@teste.com.br", "ADEROGILDO DA SILVA", pe.encode("123456"),
+				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.ATIVO, 0);
+		Proprietario prop2 = new Proprietario(null, "teste@teste.com.br", "SIGFREID DA SILVA", pe.encode("123456"),
+				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.ATIVO, 0);
+		Proprietario prop3 = new Proprietario(null, "teste@teste.com.br", "JORGE NAILTON", pe.encode("123456"),
+				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop4 = new Proprietario(null, "teste@teste.com.br", "LEANDRO LIANDERSON", pe.encode("123456"),
+				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.INATIVO, 0);
+		Proprietario prop5 = new Proprietario(null, "teste@teste.com.br", "CASSIO CASSIANO", pe.encode("123456"),
+				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop6 = new Proprietario(null, "teste@teste.com.br", "PEREIRA CASSIANO", pe.encode("123456"),
+				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop7 = new Proprietario(null, "teste@teste.com.br", "SALVIO SILVA", pe.encode("123456"),
+				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop8 = new Proprietario(null, "teste@teste.com.br", "CARLOS ALITNO", pe.encode("123456"),
+				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop9 = new Proprietario(null, "teste@teste.com.br", "JOSEFA FERREIRA", pe.encode("123456"),
+				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop10 = new Proprietario(null, "teste@teste.com.br", "LACAIOS PARREIRA", pe.encode("123456"),
+				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
 		Proprietario prop11 = new Proprietario(null, "teste@teste.com.br", "JOSE FERNANDO RIBEIRA", pe.encode("123456"),
 				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop12 = new Proprietario(null, "teste@teste.com.br", "GABRIEL CELESTINO", pe.encode("123456"), new Date(),
-				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop13 = new Proprietario(null, "teste@teste.com.br", "CASSIA CELESTINO", pe.encode("123456"), new Date(),
-				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop14 = new Proprietario(null, "teste@teste.com.br", "WENDELL CLIVE", pe.encode("123456"), new Date(),
-				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop15 = new Proprietario(null, "teste@teste.com.br", "REBEKAH CELESTINO", pe.encode("123456"), new Date(),
-				sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
-		Proprietario prop16 = new Proprietario(null, "teste@teste.com.br", "MARIA DO SOCORRO PINTO", pe.encode("123456"),
+		Proprietario prop12 = new Proprietario(null, "teste@teste.com.br", "GABRIEL CELESTINO", pe.encode("123456"),
 				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop13 = new Proprietario(null, "teste@teste.com.br", "CASSIA CELESTINO", pe.encode("123456"),
+				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop14 = new Proprietario(null, "teste@teste.com.br", "WENDELL CLIVE", pe.encode("123456"),
+				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop15 = new Proprietario(null, "teste@teste.com.br", "REBEKAH CELESTINO", pe.encode("123456"),
+				new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop16 = new Proprietario(null, "teste@teste.com.br", "MARIA DO SOCORRO PINTO",
+				pe.encode("123456"), new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.BLOQUEADO, 0);
+		Proprietario prop17 = new Proprietario(null, "wendell.clive@gmail.com", "WENDELL CLIVE SANTOS DE LIRA",
+				pe.encode("123"), new Date(), sdf.parse("09/02/1987 00:00"), StatusUsuario.ATIVO, 0);
+		prop17.addPerfil(Perfil.ADMIN);
 
 		Grupo gru1 = new Grupo(null, "GRUPO 01");
 		Grupo gru2 = new Grupo(null, "GRUPO 02");
@@ -114,7 +118,7 @@ public class DBService {
 		prop2.getEscalas().addAll(Arrays.asList(esc3, esc4, esc5));
 
 		proprietarioRepository.saveAll(Arrays.asList(prop1, prop2, prop3, prop4, prop5, prop6, prop7, prop8, prop9,
-				prop10, prop11, prop12, prop13, prop14, prop15, prop16));
+				prop10, prop11, prop12, prop13, prop14, prop15, prop16, prop17));
 		escalaRepository.saveAll(Arrays.asList(esc1, esc2, esc3, esc4, esc5, esc6));
 
 		MembrosEscalados mesc1 = new MembrosEscalados(mem1, esc1, sdf.parse("20/09/2018 08:00"),
