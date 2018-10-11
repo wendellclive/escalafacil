@@ -2,6 +2,7 @@ package com.databuilder.com.br.escalafacil.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.databuilder.com.br.escalafacil.domain.Proprietario;
 
@@ -13,4 +14,7 @@ import com.databuilder.com.br.escalafacil.domain.Proprietario;
 @Repository
 public interface ProprietarioRepository extends JpaRepository<Proprietario, Integer> {
 
+	@Transactional(readOnly=true)
+	Proprietario findByEmail(String email);
+	
 }
