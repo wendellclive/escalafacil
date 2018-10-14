@@ -27,6 +27,7 @@ import lombok.Setter;
 public class Grupo implements Serializable {
 
 	private static final long serialVersionUID = 5914356445552675840L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;

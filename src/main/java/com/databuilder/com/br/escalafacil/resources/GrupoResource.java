@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,7 +51,9 @@ public class GrupoResource {
 	}
 
 	// Método para chamar Servico de inserir objeto
+
 	@ApiOperation(value="Insere Grupo")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody GrupoDTO objDto) {
 		Grupo obj = service.fromDTO(objDto);
@@ -60,7 +63,8 @@ public class GrupoResource {
 		return ResponseEntity.created(uri).build();
 		
 	}
-	
+
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@ApiOperation(value="Atualiza Grupo")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody GrupoDTO objDto, @PathVariable Integer id) {
@@ -73,7 +77,9 @@ public class GrupoResource {
 	}
 	
 	// Associado ao verbo HTTP
+
 	@ApiOperation(value="Detela Grupo")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@ApiResponses(value = {
 			@ApiResponse(code = 400, message = "Não é possível excluir uma Grupo que possui membros"),
 			@ApiResponse(code = 404, message = "Código inexistente") })

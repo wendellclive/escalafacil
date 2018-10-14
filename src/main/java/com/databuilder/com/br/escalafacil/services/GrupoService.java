@@ -33,9 +33,8 @@ public class GrupoService {
 	@Transactional
 	public Grupo insert(Grupo obj) {
 
-		Grupo newObj = find(obj.getId());
-		updateData(newObj, obj);
-		return reposit.save(newObj);
+		obj.setId(null); // faz o método entender que se não houver ID então é uma alteração
+		return reposit.save(obj);
 
 	}
 

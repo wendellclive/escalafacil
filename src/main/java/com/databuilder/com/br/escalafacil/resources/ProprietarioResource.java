@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -81,6 +82,7 @@ public class ProprietarioResource {
 	@ApiResponses(value = {
 			@ApiResponse(code = 400, message = "Não é possível excluir um Proprietário que tem Escala criada"),
 			@ApiResponse(code = 404, message = "Código inexistente") })
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 
@@ -90,6 +92,7 @@ public class ProprietarioResource {
 	}
 	
 	@ApiOperation(value="Retorna todos os Proprietários")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<ProprietarioDTO>> findAll() {
 
@@ -101,6 +104,7 @@ public class ProprietarioResource {
 	}
 	
 	@ApiOperation(value="Retorna Proprietarios até 24 linhas por pagina")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<ProprietarioDTO>> findPage(
 			@RequestParam(value="page", defaultValue="0") Integer page, 
