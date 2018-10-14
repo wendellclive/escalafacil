@@ -10,9 +10,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.databuilder.com.br.escalafacil.domain.Proprietario;
+import com.databuilder.com.br.escalafacil.domain.enums.StatusUsuario;
 import com.databuilder.com.br.escalafacil.dto.ProprietarioDTO;
+import com.databuilder.com.br.escalafacil.dto.ProprietarioNewDTO;
 import com.databuilder.com.br.escalafacil.repositories.ProprietarioRepository;
 import com.databuilder.com.br.escalafacil.services.exceptions.DataIntegrityException;
 import com.databuilder.com.br.escalafacil.services.exceptions.ObjectNotFoundException;
@@ -34,6 +37,7 @@ public class ProprietarioService {
 		
 	}
 	
+	@Transactional
 	public Proprietario insert(Proprietario obj) {
 
 		obj.setId(null); // faz o método entender que se não houver ID então é uma alteração
@@ -43,8 +47,9 @@ public class ProprietarioService {
 
 	public Proprietario update(Proprietario obj) {
 
-		find(obj.getId());
-		return reposit.save(obj);
+		Proprietario newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return reposit.save(newObj);
 
 	}
 
@@ -71,8 +76,24 @@ public class ProprietarioService {
 	
 	public Proprietario fromDTO(ProprietarioDTO objDto) {
 		return new Proprietario(objDto.getId(), objDto.getNome(), 
-				objDto.getEmail(), pe.encode(objDto.getSenha()), 
+				objDto.getEmail(), null, 
 				objDto.getDataDeNascimento(), objDto.getDataCadastro(), 
 				objDto.getStatusUsuario(), objDto.getTentativasDeAcesso());
+	}
+
+	public Proprietario fromDTO(ProprietarioNewDTO objDto) {
+		Proprietario prop = new Proprietario(null, objDto.getEmail(), objDto.getNome(), pe.encode(objDto.getSenha()), objDto.getDataCadastro(), objDto.getDataDeNascimento(), StatusUsuario.toEnum(objDto.getStatusUsuario()), objDto.getTentativasDeAcesso());
+		return prop;
+		
+	}
+
+	private void updateData(Proprietario newObj, Proprietario obj) {
+		newObj.setNome(obj.getNome());
+		newObj.setEmail(obj.getEmail());
+		newObj.setSenha(obj.getSenha());
+		newObj.setDataCadastro(obj.getDataCadastro());
+		newObj.setDataDeNascimento(obj.getDataDeNascimento());
+		newObj.setStatusUsuario(obj.getStatusUsuario());
+		newObj.setTentativasDeAcesso(obj.getTentativasDeAcesso());
 	}
 }

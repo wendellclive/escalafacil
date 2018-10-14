@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.databuilder.com.br.escalafacil.domain.Membro;
 import com.databuilder.com.br.escalafacil.repositories.MembroRepository;
@@ -31,18 +32,20 @@ public class MembroService {
 		
 	}
 	
-
+	@Transactional
 	public Membro insert(Membro obj) {
 
-		obj.setId(null); // faz o método entender que se não houver ID então é uma alteração
-		return reposit.save(obj);
+		Membro newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return reposit.save(newObj);
 
 	}
 
 	public Membro update(Membro obj) {
 
-		find(obj.getId());
-		return reposit.save(obj);
+		Membro newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return reposit.save(newObj);
 
 	}
 
@@ -65,6 +68,11 @@ public class MembroService {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		
 		return reposit.findAll(pageRequest);
+	}
+	
+	private void updateData(Membro newObj, Membro obj) {
+		newObj.setNome(obj.getNome());
+		newObj.setEmail(obj.getEmail());
 	}
 	
 }

@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.databuilder.com.br.escalafacil.domain.Proprietario;
 import com.databuilder.com.br.escalafacil.dto.ProprietarioDTO;
+import com.databuilder.com.br.escalafacil.dto.ProprietarioNewDTO;
 import com.databuilder.com.br.escalafacil.services.ProprietarioService;
 
 import io.swagger.annotations.ApiOperation;
@@ -53,7 +54,7 @@ public class ProprietarioResource {
 	// Método para chamar Servico de inserir objeto
 	@ApiOperation(value="Insere Proprietario")
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@Valid @RequestBody ProprietarioDTO objDto) {
+	public ResponseEntity<Void> insert(@Valid @RequestBody ProprietarioNewDTO objDto) {
 		Proprietario obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -64,15 +65,17 @@ public class ProprietarioResource {
 	
 	@ApiOperation(value="Atualiza Proprietario")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Proprietario obj, @PathVariable Integer id) {
+	public ResponseEntity<Void> update(@Valid @RequestBody ProprietarioDTO objDto, @PathVariable Integer id) {
 
+		Proprietario obj = service.fromDTO(objDto);
 		obj.setId(id);
 		obj = service.update(obj);
 		
 		return ResponseEntity.noContent().build();
-		
+			
 	}
-	
+
+
 	// Associado ao verbo HTTP
 	@ApiOperation(value="Remove Proprietario")
 	@ApiResponses(value = {

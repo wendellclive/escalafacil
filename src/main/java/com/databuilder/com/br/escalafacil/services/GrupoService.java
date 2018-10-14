@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.databuilder.com.br.escalafacil.domain.Grupo;
 import com.databuilder.com.br.escalafacil.dto.GrupoDTO;
@@ -29,18 +30,21 @@ public class GrupoService {
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Grupo.class.getName()));
 	}
 
+	@Transactional
 	public Grupo insert(Grupo obj) {
 
-		obj.setId(null); // faz o método entender que se não houver ID então é uma alteração
-		return reposit.save(obj);
+		Grupo newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return reposit.save(newObj);
 
 	}
 
 	public Grupo update(Grupo obj) {
 
-		find(obj.getId());
-		return reposit.save(obj);
-
+		Grupo newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return reposit.save(newObj);
+		
 	}
 
 	public void delete(Integer id) {
@@ -67,5 +71,10 @@ public class GrupoService {
 	public Grupo fromDTO(GrupoDTO objDto) {
 		return new Grupo(objDto.getId(), objDto.getNome());
 	}
+	
+	private void updateData(Grupo newObj, Grupo obj) {
+		newObj.setNome(obj.getNome());
+	}
+	
 	
 }

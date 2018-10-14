@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -44,6 +45,8 @@ public class Proprietario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(unique=true)
 	private String email;
 	private String nome;
 
@@ -58,7 +61,7 @@ public class Proprietario implements Serializable {
 	public List<Escala> escalas = new ArrayList<>();
 
 	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "PERFIS")
+	@CollectionTable(name = "perfis")
 	private Set<Integer> perfis = new HashSet<>();
 
 	public Proprietario() {

@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.databuilder.com.br.escalafacil.domain.Escala;
 import com.databuilder.com.br.escalafacil.repositories.EscalaRepository;
@@ -29,18 +30,20 @@ public class EscalaService {
 
 	}
 	
-
+	@Transactional
 	public Escala insert(Escala obj) {
 
-		obj.setId(null); // faz o método entender que se não houver ID então é uma alteração
-		return reposit.save(obj);
+		Escala newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return reposit.save(newObj);
 
 	}
 
 	public Escala update(Escala obj) {
 
-		find(obj.getId());
-		return reposit.save(obj);
+		Escala newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return reposit.save(newObj);
 
 	}
 
@@ -64,5 +67,13 @@ public class EscalaService {
 		
 		return reposit.findAll(pageRequest);
 	}
-	
+
+	private void updateData(Escala newObj, Escala obj) {
+		newObj.setInstituicao(obj.getInstituicao());
+		newObj.setFinalidade(obj.getFinalidade());
+		newObj.setTitulo(obj.getTitulo());
+		newObj.setTipoEscala(obj.getTipoEscala());
+		newObj.setDataCriacao(obj.getDataCriacao());
+	}
+
 }

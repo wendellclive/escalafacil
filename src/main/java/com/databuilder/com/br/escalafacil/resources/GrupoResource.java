@@ -2,6 +2,7 @@ package com.databuilder.com.br.escalafacil.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -86,11 +87,11 @@ public class GrupoResource {
 	
 	@ApiOperation(value="Retorna todos os Grupos")
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Grupo>> findAll() {
+	public ResponseEntity<List<GrupoDTO>> findAll() {
 
 		List<Grupo> list = service.findAll();
-
-		return ResponseEntity.ok().body(list);
+		List<GrupoDTO> listDto = list.stream().map(obj -> new GrupoDTO(obj)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDto);
 
 	}
 	
