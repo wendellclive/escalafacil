@@ -1,12 +1,11 @@
 package com.databuilder.com.br.escalafacil.resources;
 
 import java.net.URI;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.databuilder.com.br.escalafacil.domain.Escala;
-import com.databuilder.com.br.escalafacil.dto.EscalaDTO;
 import com.databuilder.com.br.escalafacil.services.EscalaService;
 
 import io.swagger.annotations.ApiOperation;
@@ -74,6 +72,7 @@ public class EscalaResource {
 	@ApiResponses(value = {
 			@ApiResponse(code = 400, message = "Não é possível excluir uma Escala que possui membros"),
 			@ApiResponse(code = 404, message = "Código inexistente") })
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 
@@ -81,7 +80,7 @@ public class EscalaResource {
 		return ResponseEntity.noContent().build();
 
 	}
-
+/*
 	@ApiOperation(value="Retorna todas as Escalas")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<EscalaDTO>> findAll() {
@@ -106,5 +105,17 @@ public class EscalaResource {
 
 	}
 	
+	*/
+	@ApiOperation(value="Retorna Escalas até 24 linhas por pagina")
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<Page<Escala>> findPage(
+			@RequestParam(value="page", defaultValue="0") Integer page, 
+			@RequestParam(value="linesPerPage", defaultValue="24") Integer linesPerPage, 
+			@RequestParam(value="direction", defaultValue="DESC") String direction, 
+			@RequestParam(value="orderBy", defaultValue="instituicao") String orderBy) {
+		Page<Escala> list = service.findPage(page, linesPerPage, direction, orderBy);
+		return ResponseEntity.ok().body(list);
+
+	}
 	
 }
