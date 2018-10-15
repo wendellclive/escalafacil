@@ -13,10 +13,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.databuilder.com.br.escalafacil.domain.Proprietario;
+import com.databuilder.com.br.escalafacil.domain.enums.Perfil;
 import com.databuilder.com.br.escalafacil.domain.enums.StatusUsuario;
 import com.databuilder.com.br.escalafacil.dto.ProprietarioDTO;
 import com.databuilder.com.br.escalafacil.dto.ProprietarioNewDTO;
 import com.databuilder.com.br.escalafacil.repositories.ProprietarioRepository;
+import com.databuilder.com.br.escalafacil.security.UserSS;
+import com.databuilder.com.br.escalafacil.services.exceptions.AuthorizationException;
 import com.databuilder.com.br.escalafacil.services.exceptions.DataIntegrityException;
 import com.databuilder.com.br.escalafacil.services.exceptions.ObjectNotFoundException;
 
@@ -30,6 +33,12 @@ public class ProprietarioService {
 	private ProprietarioRepository reposit;
 	
 	public Proprietario find(Integer id) throws ObjectNotFoundException {
+		
+		UserSS user = UserService.authenticated();
+		if (user==null || !user.hasHole(Perfil.ADMIN) && !id.equals(user.getId())) {
+			throw new AuthorizationException("Acesso negado");
+		}
+		
 		
 		Optional<Proprietario> obj = reposit.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
