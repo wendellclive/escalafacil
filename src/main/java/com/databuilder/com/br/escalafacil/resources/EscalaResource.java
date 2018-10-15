@@ -20,6 +20,7 @@ import com.databuilder.com.br.escalafacil.services.EscalaService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import javassist.tools.rmi.ObjectNotFoundException;
 
 /**
  * Created by Wendell Clive Santos de Lira - Email: wendell.clive@gmail.com
@@ -36,8 +37,8 @@ public class EscalaResource {
 
 	// Associado ao verbo HTTP
 	@ApiOperation(value="Busca Escala por id")
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Escala> find(@PathVariable Integer id) {
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Escala> find(@PathVariable Integer id) throws ObjectNotFoundException {
 
 		Escala obj = service.find(id);
 
@@ -112,7 +113,7 @@ public class EscalaResource {
 			@RequestParam(value="page", defaultValue="0") Integer page, 
 			@RequestParam(value="linesPerPage", defaultValue="24") Integer linesPerPage, 
 			@RequestParam(value="direction", defaultValue="DESC") String direction, 
-			@RequestParam(value="orderBy", defaultValue="instituicao") String orderBy) {
+			@RequestParam(value="orderBy", defaultValue="id") String orderBy) {
 		Page<Escala> list = service.findPage(page, linesPerPage, direction, orderBy);
 		return ResponseEntity.ok().body(list);
 

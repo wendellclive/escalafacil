@@ -24,7 +24,7 @@ public class EscalaService {
 
 	@Autowired
 	private EscalaRepository reposit;
-	
+
 	@Autowired
 	private ProprietarioService proprietarioService;
 
@@ -35,7 +35,7 @@ public class EscalaService {
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Escala.class.getName()));
 
 	}
-	
+
 	@Transactional
 	public Escala insert(Escala obj) {
 
@@ -44,7 +44,6 @@ public class EscalaService {
 
 	}
 
-	
 	public Escala update(Escala obj) {
 
 		Escala newObj = find(obj.getId());
@@ -52,7 +51,7 @@ public class EscalaService {
 		return reposit.save(newObj);
 
 	}
-	
+
 	public void delete(Integer id) {
 
 		find(id);
@@ -62,24 +61,23 @@ public class EscalaService {
 			throw new DataIntegrityException("Não é possivel Excluir um Escala");
 		}
 	}
-	
+
 	public List<Escala> findAll() {
 		return reposit.findAll();
 	}
 
-	
 	public Page<Escala> findPage(Integer page, Integer linesPerPage, String direction, String orderBy) {
-		
+
 		UserSS user = UserService.authenticated();
-		
-		if(user == null) {
+
+		if (user == null) {
 			throw new AuthorizationException("Acesso negado");
 		}
-		
-		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);	
+
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		Proprietario proprietario = proprietarioService.find(user.getId());
 		return reposit.findByProprietario(proprietario, pageRequest);
-		
+
 	}
 
 	private void updateData(Escala newObj, Escala obj) {
