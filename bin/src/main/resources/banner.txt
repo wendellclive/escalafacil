@@ -1,0 +1,13 @@
+${AnsiColor.BLUE}
+${AnsiColor.BLUE}    
+${AnsiColor.BLUE} _____                    _        ______               _  _ 
+${AnsiColor.BLUE}|  ___|                  | |       |  ___|             (_)| |
+${AnsiColor.BLUE}| |__   ___   ___   __ _ | |  __ _ | |_     __ _   ___  _ | |
+${AnsiColor.BLUE}|  __| / __| / __| / _` || | / _` ||  _|   / _` | / __|| || |
+${AnsiColor.BLUE}| |___ \__ \| (__ | (_| || || (_| || |    | (_| || (__ | || |   DataBuilder.com
+${AnsiColor.BLUE}\____/ |___/ \___| \__,_||_| \__,_|\_|     \__,_| \___||_||_|
+${AnsiColor.BLUE} 
+${AnsiColor.BLUE} doom
+
+
+
