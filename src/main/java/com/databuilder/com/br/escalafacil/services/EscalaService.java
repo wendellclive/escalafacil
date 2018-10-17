@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.databuilder.com.br.escalafacil.domain.Escala;
 import com.databuilder.com.br.escalafacil.domain.Proprietario;
-import com.databuilder.com.br.escalafacil.domain.enums.Perfil;
 import com.databuilder.com.br.escalafacil.repositories.EscalaRepository;
 import com.databuilder.com.br.escalafacil.security.UserSS;
 import com.databuilder.com.br.escalafacil.services.exceptions.AuthorizationException;
@@ -32,12 +31,15 @@ public class EscalaService {
 	public Escala find(Integer id) {
 
 		UserSS user = UserService.authenticated();
-		
-		if (user==null || !user.hasHole(Perfil.ADMIN) && !id.equals(user.getId())) {
+
+		if (user == null) {
 			throw new AuthorizationException("Acesso negado");
 		}
 		
-		Optional<Escala> obj = reposit.findById(id);
+		Proprietario proprietario = proprietarioService.find(user.getId());
+		
+		Optional<Escala> obj = reposit.findByIdAndProprietario(id, proprietario);
+		
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Escala.class.getName()));
 

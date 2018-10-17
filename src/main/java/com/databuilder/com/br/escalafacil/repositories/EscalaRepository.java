@@ -1,6 +1,8 @@
 package com.databuilder.com.br.escalafacil.repositories;
 
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,4 +23,6 @@ public interface EscalaRepository extends JpaRepository<Escala, Integer> {
 	@Transactional(readOnly=true)
 	Page<Escala> findByProprietario(Proprietario proprietario, Pageable pageRequest);
 
+	Optional<Escala> findByIdAndProprietario(Integer id, Proprietario proprietario);
+	
 }

@@ -21,7 +21,7 @@ public class EscalafacilApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 	
-		s3Service.uploadFile("C:\\Temp\\fotos\\foto1.jpg");
+		//s3Service.uploadFile("C:\\Temp\\fotos\\foto1.jpg");
 		
 		
 	}
