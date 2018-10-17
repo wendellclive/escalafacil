@@ -1,5 +1,6 @@
 package com.databuilder.com.br.escalafacil.services;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.databuilder.com.br.escalafacil.domain.Proprietario;
 import com.databuilder.com.br.escalafacil.domain.enums.Perfil;
@@ -31,7 +33,10 @@ public class ProprietarioService {
 	
 	@Autowired
 	private ProprietarioRepository reposit;
-	
+
+	@Autowired
+	private S3Service s3Service;
+
 	public Proprietario find(Integer id) throws ObjectNotFoundException {
 		
 		UserSS user = UserService.authenticated();
@@ -105,4 +110,9 @@ public class ProprietarioService {
 		newObj.setStatusUsuario(obj.getStatusUsuario());
 		newObj.setTentativasDeAcesso(obj.getTentativasDeAcesso());
 	}
+	
+	public URI uploadProfilePicture(MultipartFile multipartFile) {
+		return s3Service.uploadFile(multipartFile);
+	}
+	
 }
