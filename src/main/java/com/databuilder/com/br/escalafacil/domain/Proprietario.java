@@ -63,7 +63,7 @@ public class Proprietario implements Serializable {
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "perfis")
 	private Set<Integer> perfis = new HashSet<>();
-
+	
 	public Proprietario() {
 		addPerfil(Perfil.PROPRIETARIO);
 	}
