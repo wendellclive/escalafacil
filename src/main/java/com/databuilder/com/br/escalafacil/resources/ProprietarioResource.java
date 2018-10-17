@@ -48,11 +48,20 @@ public class ProprietarioResource {
 	public ResponseEntity<Proprietario> find(@PathVariable Integer id) throws ObjectNotFoundException {
 		
 		Proprietario obj = service.find(id);
-		
 		return ResponseEntity.ok().body(obj);
 
 	}
 
+	// Associado ao verbo HTTP
+		@ApiOperation(value="Busca Proprietario por Email")
+		@RequestMapping(value="/email", method = RequestMethod.GET)
+		public ResponseEntity<Proprietario> find(@RequestParam(value="value") String email) {
+			
+			Proprietario obj = service.findByEmail(email);	
+			return ResponseEntity.ok().body(obj);
+
+		}
+		
 	// Método para chamar Servico de inserir objeto
 	@ApiOperation(value="Insere Proprietario")
 	@RequestMapping(method=RequestMethod.POST)

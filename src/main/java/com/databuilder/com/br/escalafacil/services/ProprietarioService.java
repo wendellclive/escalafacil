@@ -91,6 +91,24 @@ public class ProprietarioService {
 		return reposit.findAll();
 	}
 	
+	public Proprietario findByEmail(String email) {
+		
+		UserSS user = UserService.authenticated();
+		if (user==null || !user.hasHole(Perfil.ADMIN) && !email.equals(user.getUsername())) {
+			throw new AuthorizationException("Acesso negado");
+		}
+
+		Proprietario obj = reposit.findByEmail(email);
+		
+		if(obj == null) {
+			throw new ObjectNotFoundException(
+					"Objeto não encontrado! Id: " + user.getId() + ", Tipo: " + Proprietario.class.getName());			
+		}
+		
+		return obj;
+		
+	}
+	
 	public Page<Proprietario> findPage(Integer page, Integer linesPerPage, String direction, String orderBy) {
 		
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
