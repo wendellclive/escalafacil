@@ -92,7 +92,7 @@ public class ProprietarioResource {
 	}
 	
 	@ApiOperation(value="Retorna todos os Proprietários")
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	//@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<ProprietarioDTO>> findAll() {
 
